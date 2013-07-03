@@ -66,7 +66,12 @@ MAVEN_URL="http://mirrors.gigenet.com/apache/maven/maven-3/3.0.5/binaries/apache
   echo -n "----> PWD: "
   pwd  
   echo -n "-----> Installing Maven 3.0.5 from $MAVEN_URL..."
-  curl --silent --max-time 60 --location $MAVEN_URL | tar xz
+  curl --max-time 60 --location $MAVEN_URL | tar xz
+  chmod +x apache-maven-3.0.5/bin/mvn
+  echo " done"
+  echo "-----> Testing mvn -version"
+  apache-maven-3.0.5/bin/mvn -version
+
   mv apache-maven-3.0.5 .maven
   if [ ! -d .m2 ]; then
     mkdir .m2
