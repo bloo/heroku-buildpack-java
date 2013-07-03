@@ -15,7 +15,8 @@ LOGGER_FLAGS=""
 curl --silent --location http://heroku-jvm-common.s3.amazonaws.com/jvm-buildpack-common.tar.gz | tar xz
 . bin/java
 
-KEEP_M2_CACHE="true"
+#KEEP_M2_CACHE="true"
+KEEP_M2_CACHE="false"
 
 # create default system.properties for apps that had the jdk vendored in 
 if [ -f ${CACHE_DIR}/.jdk/vendor ] && [ ! -f ${BUILD_DIR}/system.properties ]; then
