@@ -68,9 +68,11 @@ MAVEN_URL="http://mirrors.gigenet.com/apache/maven/maven-3/3.0.5/binaries/apache
   mv apache-maven-3.0.5 .maven
   if [ ! -d .m2 ]; then
     mkdir .m2
-  fi
+  fi  
   chmod +x .maven/bin/mvn
   echo " done"
+  echo "-----> Testing mvn -version"
+  .maven/bin/mvn -version
 #fi
 
 MAVEN_SETTINGS_URL="http://s3.amazonaws.com/heroku-jvm-langpack-java/settings.xml"
