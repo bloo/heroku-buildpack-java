@@ -62,16 +62,11 @@ cd $CACHE_DIR
 # install maven without base repository
 MAVEN_URL="http://mirrors.gigenet.com/apache/maven/maven-3/3.0.5/binaries/apache-maven-3.0.5-bin.tar.gz"
 
-#if [ ! -d .maven ]; then
-  echo -n "----> PWD: "
-  pwd  
-  echo -n "-----> Installing Maven 3.0.5 from $MAVEN_URL..."
-  curl --max-time 60 --location $MAVEN_URL | tar xz
-  chmod +x apache-maven-3.0.5/bin/mvn
+rm -rf .maven
+if [ ! -d .maven ]; then
+  echo -n "-----> Installing Maven 3.0.5..."
+  curl --silent --max-time 60 --location $MAVEN_URL | tar xz
   echo " done"
-  echo "-----> Testing mvn -version"
-  apache-maven-3.0.5/bin/mvn -version
-
   mv apache-maven-3.0.5 .maven
   if [ ! -d .m2 ]; then
     mkdir .m2
@@ -80,7 +75,7 @@ MAVEN_URL="http://mirrors.gigenet.com/apache/maven/maven-3/3.0.5/binaries/apache
   echo " done"
   echo "-----> Testing mvn -version"
   .maven/bin/mvn -version
-#fi
+fi
 
 MAVEN_SETTINGS_URL="http://s3.amazonaws.com/heroku-jvm-langpack-java/settings.xml"
 
