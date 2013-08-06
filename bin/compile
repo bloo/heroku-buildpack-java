@@ -14,7 +14,8 @@ LOGGER_FLAGS=""
 
 ### BGT custom
 # install maven without base repository
-MAVEN_URL="http://mirrors.gigenet.com/apache/maven/maven-3/3.1.0/binaries/apache-maven-3.1.0-bin.tar.gz"
+MAVEN_VERSION="3.1.0"
+MAVEN_URL="http://mirrors.gigenet.com/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz"
 MAVEN_FLAGS="-X -e"
 rm -rf .maven
 ### end BGT custom
@@ -68,10 +69,10 @@ fi
 cd $CACHE_DIR
 
 if [ ! -d .maven ]; then
-  echo -n "-----> Installing Maven 3.0.5..."
+  echo -n "-----> Installing Maven $MAVEN_VERSION..."
   curl --silent --max-time 60 --location $MAVEN_URL | tar xz
   echo " done"
-  mv apache-maven-3.0.5 .maven
+  mv apache-maven-$MAVEN_VERSION .maven
   if [ ! -d .m2 ]; then
     mkdir .m2
   fi  
