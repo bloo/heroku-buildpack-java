@@ -12,6 +12,13 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 LOGGER_FLAGS=""
 
+### BGT custom
+# install maven without base repository
+MAVEN_URL="http://mirrors.gigenet.com/apache/maven/maven-3/3.1.0/binaries/apache-maven-3.1.0-bin.tar.gz"
+MAVEN_FLAGS="-X -e"
+rm -rf .maven
+### end BGT custom
+
 curl --silent --location http://heroku-jvm-common.s3.amazonaws.com/jvm-buildpack-common.tar.gz | tar xz
 . bin/java
 
@@ -60,10 +67,6 @@ fi
 # change to cache dir to install maven
 cd $CACHE_DIR
 
-# install maven without base repository
-MAVEN_URL="http://mirrors.gigenet.com/apache/maven/maven-3/3.0.5/binaries/apache-maven-3.0.5-bin.tar.gz"
-
-rm -rf .maven
 if [ ! -d .maven ]; then
   echo -n "-----> Installing Maven 3.0.5..."
   curl --silent --max-time 60 --location $MAVEN_URL | tar xz
@@ -93,7 +96,7 @@ cd $BUILD_DIR
 export MAVEN_OPTS="-Xmx512m"
 
 # build app
-BUILDCMD="$CACHE_DIR/.maven/bin/mvn -B -Duser.home=$BUILD_DIR -Dmaven.repo.local=$CACHE_DIR/.m2/repository -s $CACHE_DIR/.m2/settings.xml -DskipTests=true -Dheroku clean install"
+BUILDCMD="$CACHE_DIR/.maven/bin/mvn $MAVEN_FLAGS -B -Duser.home=$BUILD_DIR -Dmaven.repo.local=$CACHE_DIR/.m2/repository -s $CACHE_DIR/.m2/settings.xml -DskipTests=true -Dheroku clean install"
 echo "-----> executing $BUILDCMD"
 
 $BUILDCMD 2>&1 | sed -u 's/^/       /'
