@@ -23,9 +23,9 @@ CACHE_DIR=$2
 LOGGER_FLAGS=""
 
 # FFFFFF!!!
-find $CACHE_DIR
-rm -rf $CACHE_DIR
-#rm -rf $CACHE_DIR/repository/bloo/
+find $CACHE_DIR/.m2/repository/bloo/
+#rm -rf $CACHE_DIR
+rm -rf $CACHE_DIR/.m2/repository/bloo/
 #rm -rf $CACHE_DIR/repository/com/topshelf/
 #rm -rf $CACHE_DIR/repository/com/winespoke/
 #rm -rf $CACHE_DIR/repository/com/plovgh/
