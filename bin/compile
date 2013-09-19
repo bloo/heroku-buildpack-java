@@ -23,6 +23,7 @@ CACHE_DIR=$2
 LOGGER_FLAGS=""
 
 # FFFFFF!!!
+find $CACHE_DIR
 rm -rf $CACHE_DIR
 #rm -rf $CACHE_DIR/repository/bloo/
 #rm -rf $CACHE_DIR/repository/com/topshelf/
