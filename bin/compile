@@ -23,12 +23,10 @@ CACHE_DIR=$2
 LOGGER_FLAGS=""
 
 # FFFFFF!!!
-find $CACHE_DIR/.m2/repository/bloo/
-#rm -rf $CACHE_DIR
 rm -rf $CACHE_DIR/.m2/repository/bloo/
-#rm -rf $CACHE_DIR/repository/com/topshelf/
-#rm -rf $CACHE_DIR/repository/com/winespoke/
-#rm -rf $CACHE_DIR/repository/com/plovgh/
+#rm -rf $CACHE_DIR/.m2/repository/com/topshelf/
+#rm -rf $CACHE_DIR/.m2/repository/com/winespoke/
+#rm -rf $CACHE_DIR/.m2/repository/com/plovgh/
 
 curl --silent --location http://heroku-jvm-common.s3.amazonaws.com/jvm-buildpack-common.tar.gz | tar xz
 . bin/java
