@@ -9,7 +9,7 @@ set -e
 # install maven without base repository
 MAVEN_VERSION="3.1.1"
 MAVEN_URL="http://mirrors.gigenet.com/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz"
-MAVEN_FLAGS="-X -e"
+#MAVEN_FLAGS="-X -e"
 echo -c "pwd:"
 pwd
 echo "Downloading $MAVEN_URL"
